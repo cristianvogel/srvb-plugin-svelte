@@ -1,12 +1,5 @@
 <script>
 	// @ts-nocheck
-
-	/**
-	 * Precis-UI © Cristian Vogel 2022
-	 * No unauthorised use or derivatives!
-	 * @neverenginelabs
-	 */
-
 	import Radial from '$lib/components/PrecisUI/Radial.svelte';
 </script>
 
@@ -21,6 +14,7 @@
 			id={`dial.${index}`}
 			label={['decay', 'mod', 'mix', 'size'][index - 1]}
 			scale="0.8"
+			on:output
 		/>
 	{/each}
 </div>
