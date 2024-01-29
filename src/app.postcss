@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles --- */
+
+html,
+body {
+	position: fixed;
+	overflow: hidden;
+	/* set in WebViewEditor.cpp */
+	width: 720px;
+	height: 444px;
+}
+
+/* Typography --- */
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.font-heading-token {
+	font-weight: bold;
+}
+.h1 {
+	@apply lg:!text-7xl;
+}
+
+/* Page --- */
+
+/* Define the responsive page container width */
+.page-container {
+	@apply max-w-7xl mx-auto px-4;
+}
+/* Define the responsive padding and spacing values */
+.page-spacing {
+	@apply py-10 md:py-20 space-y-10 md:space-y-20;
+}
+
+/* Tailwind for additional PrecisUI styling */
+
+.dial-label {
+	font-size: 0.9rem;
+	font-weight: bold;
+	letter-spacing: 0.1rem;
+	fill: silver;
+	opacity: 0.9;
+}

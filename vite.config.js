@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { sveltekit } from '@sveltejs/kit/vite';
-
+import { purgeCss } from 'vite-plugin-tailwind-purgecss';
 import { execSync } from 'node:child_process'
 
 const currentCommit = execSync("git rev-parse --short HEAD").toString();
@@ -34,9 +34,14 @@ function pubDirReloadPlugin() {
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
+  resolve: { 
+    alias: {
+     $stores: '/src/stores',
+    }
+  },
   define: {
     __COMMIT_HASH__: JSON.stringify(currentCommit),
     __BUILD_DATE__: JSON.stringify(dateString),
   },
-  plugins: [sveltekit(), pubDirReloadPlugin()],
+  plugins: [sveltekit(), pubDirReloadPlugin(), purgeCss()],
 })

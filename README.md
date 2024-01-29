@@ -1,4 +1,7 @@
-# SRVB (Template with Svelte)
+# SRVB
+# Template with SvelteKit, Typescript, Skeleton and Elementary
+
+This is a template for building audio plugins with SvelteKit, Skeleton, Typescript and Elementary. It is by no means a clean and simple template. Still a work in progress and rather undocumented. It is based on the [SRVB](https://github.com/elemaudio/srvb) example from Elementary, which is using React and Tailwind. I have replaced React with SvelteKit and Tailwind with Skeleton UI - I also made UI implemntations again from scratch.
 
 SRVB is a small digital reverb audio plugin (VST3/AU) for MacOS and Windows.
 
