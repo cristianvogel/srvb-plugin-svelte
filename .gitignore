@@ -10,7 +10,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # Builds
-/native
+native
 node_modules
 build
 dist

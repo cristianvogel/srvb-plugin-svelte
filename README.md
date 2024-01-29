@@ -1,4 +1,4 @@
-# SRVB
+# SRVB (Template with Svelte)
 
 SRVB is a small digital reverb audio plugin (VST3/AU) for MacOS and Windows.
 
@@ -54,6 +54,7 @@ npm install
 ```
 
 ### Develop
+
 ```bash
 npm run dev
 ```
@@ -63,6 +64,7 @@ run the Vite dev server to serve those assets. This arrangement enables Vite's h
 the plugin while it's running inside a host.
 
 ### Release
+
 ```bash
 npm run build
 ```
