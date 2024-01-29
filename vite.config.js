@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
 import { sveltekit } from '@sveltejs/kit/vite';
 
 import { execSync } from 'node:child_process'
@@ -18,6 +17,7 @@ const dateString = `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate(
 function pubDirReloadPlugin() {
   return {
     name: 'pubDirReload',
+    // @ts-ignore
     handleHotUpdate({file, modules, server}) {
       if (file.includes('public/dsp.main.js')) {
         server.ws.send({
