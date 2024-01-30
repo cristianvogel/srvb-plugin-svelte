@@ -1,33 +1,26 @@
 import { writable } from 'svelte/store';
 import type { Writable } from 'svelte/store';
-import type { BasicController } from '$lib/precisUI/lib/PrecisControllers';
-import type { PointsArray } from '$lib/precisUI/Precis-UI-TypeDeclarations';
+import manifest from '$lib/data/manifest.json';
 
-export type WidgetRegister = Map<string, BasicController>; // widget.id , instance
-export const WidgetStore: Writable<WidgetRegister> = writable(new Map());
-
-type PointerPlot = Map<string, PointsArray>; // widget.id , array of points
-export const PointerPlotStore: Writable<PointerPlot> = writable(new Map());
-
-export const ListeningWidget: Writable<BasicController> = writable();
-
-export const ListeningElement: Writable<HTMLElement> = writable();
-
-/**
- * this is an experimental implementation
- * of a Dirty flag in a store. When it is triggered, its value increments
- * by 1 and can then be used to trigger use() actions
- */
-function createDirty() {
-	const { subscribe, set, update } = writable(0);
-
-	return {
-		subscribe,
-		resetTo: (v) => {
-			set(v);
-		},
-		trigger: () => update((n) => n + 1)
-	};
+interface Parameter {
+	paramId: string;
+	name: string;
+	min: number;
+	max: number;
+	defaultValue: number;
 }
 
-export const Dirty = createDirty();
+interface Window {
+	width: number;
+	height: number;
+}
+
+interface Manifest {
+	window: Window;
+	parameters: Parameter[];
+}
+
+//---- Cables related -------------------
+export const CablesPatches: Writable<any> = writable([]);
+
+export const Manifest: Writable<Manifest> = writable(manifest);

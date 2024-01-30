@@ -1,7 +1,6 @@
 <script>
 	// @ts-nocheck
 	import InteractiveControls from '$lib/components/InteractiveControls.svelte';
-	import { toFixed } from '$lib/precisUI/lib/Utils';
 
 	// todo: try to get this from the public/manifest.json file
 	const manifest = {
@@ -24,7 +23,7 @@
 	const parameters = manifest.parameters;
 
 	function handleOutputValue(ev) {
-		readout = Number(toFixed(ev.detail.value, 4));
+		readout = ev.detail.value;
 		touchedID = ev.detail.id;
 		const name = getNameFromManifest(touchedID);
 		try {
@@ -76,7 +75,7 @@
 		margin-left: 1px;
 		padding-left: 10px;
 		outline: 0;
-		background-color: #868484;
+		background-color: #5e6d99;
 		border-radius: 2px;
 		box-shadow:
 			10px 10px 20px #c7c7c7,
@@ -89,41 +88,10 @@
 		height: 360px;
 		display: flex;
 		padding: 1rem;
-		background-color: #222222;
+		background-color: #313131;
 		border-radius: 20px;
 		box-shadow:
 			10px 10px 20px rgba(119, 147, 138, 0.302),
 			-10px -10px 20px #403f3f;
 	}
-
-	/* Define the responsive design
-	@media (min-width: 640px) {
-		.display-screen {
-			width: 60%;
-		}
-	}
-
-	@media (min-width: 768px) {
-		.display-screen {
-			width: 50%;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.display-screen {
-			width: 40%;
-		}
-	}
-
-	@media (min-width: 1280px) {
-		.display-screen {
-			width: 30%;
-		}
-	}
-
-	@media (min-width: 1536px) {
-		.display-screen {
-			width: 20%;
-		}
-	} */
 </style>

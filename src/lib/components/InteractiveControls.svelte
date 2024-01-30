@@ -1,20 +1,15 @@
 <script>
 	// @ts-nocheck
-	import Radial from '$lib/components/PrecisUI/Radial.svelte';
+	import CablesDial from './Widgets/CablesDial.svelte';
+	import { Manifest } from '$stores';
 </script>
 
-<div class="grid grid-cols-4 gap-4">
+<div class="grid grid-cols-8 grid-rows-1 gap-0 mt-10">
 	{#each [1, 2, 3, 4] as index}
-		<!-- 	
-		this is all SVG, so styling can be applied to a limited extent 
-		see app.postcss for additional styling example
-	-->
-		<Radial
-			x={120 * index}
-			id={`dial.${index}`}
-			label={['decay', 'mod', 'mix', 'size'][index - 1]}
-			scale="0.8"
-			on:output
-		/>
+		{@const { paramId, name, min, max, defaultValue } = $Manifest.parameters[index - 1]}
+		<CablesDial paramId={'dial-' + paramId} {name} {min} {max} {defaultValue} />
 	{/each}
 </div>
+
+<style>
+</style>
