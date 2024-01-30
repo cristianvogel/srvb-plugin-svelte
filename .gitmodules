@@ -7,3 +7,6 @@
 [submodule "choc"]
 	path = native/choc
 	url = https://github.com/nick-thompson/choc.git
+[submodule "static/cables-dial"]
+	path = static/cables-dial
+	url = https://github.com/cristianvogel/dial-encoder-cables
