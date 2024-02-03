@@ -34,8 +34,9 @@ export function removeListeners() {
 }
 
 async function addMouseListeners() {
-	console.log('pointer locking and adding listeners to -> ' + _widget.id);
-	_element.requestPointerLock();
+	console.log(' adding listeners to -> ' + _widget.id);
+	// pointerLock is not working in WebView
+	// _element.requestPointerLock();
 	document.addEventListener('mousemove', drag);
 	document.addEventListener('mouseup', release);
 }
@@ -47,7 +48,8 @@ function addKeyListeners() {
 
 function removeMouseListeners() {
 	console.log('releasing pointer and removing listeners from <- ' + _widget.id);
-	document.exitPointerLock();
+	// pointerLock is not working in WebView
+	// document.exitPointerLock();
 	document.removeEventListener('mousemove', drag);
 	document.removeEventListener('mouseup', release);
 }

@@ -168,7 +168,7 @@ using DOM selectors if needed
 		<div
 			id="{dial.id}-animatedReadout"
 			class="animatedReadout"
-			style="transform: translate( 30%, 55%)"
+			style="transform: translate( 50%, 70%)"
 		>
 			<svg style="position: static;" in:fade out:fade>
 				<g
