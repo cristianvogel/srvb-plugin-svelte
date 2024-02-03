@@ -2,20 +2,9 @@
 	// @ts-nocheck
 	import InteractiveControls from '$lib/components/InteractiveControls.svelte';
 	import { toFixed } from '$lib/precisUI/lib/Utils';
+	import { ParameterManifest } from '$stores/generalStores';
 
-	// todo: try to get this from the public/manifest.json file
-	const manifest = {
-		window: {
-			width: 720,
-			height: 444
-		},
-		parameters: [
-			{ paramId: 'size', name: 'Size', min: 0.0, max: 1.0, defaultValue: 0.5 },
-			{ paramId: 'decay', name: 'Decay', min: 0.0, max: 1.0, defaultValue: 0.5 },
-			{ paramId: 'mod', name: 'Mod', min: 0.0, max: 1.0, defaultValue: 0.5 },
-			{ paramId: 'mix', name: 'Mix', min: 0.0, max: 1.0, defaultValue: 0.5 }
-		]
-	};
+	const manifest = $ParameterManifest;
 
 	let readout = 0;
 	let touchedID = 'dial.1';
