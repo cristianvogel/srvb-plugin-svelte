@@ -5,9 +5,6 @@
 	import '../app.postcss';
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import { PixelDensity } from '$stores/generalStores';
-	// SvelteKit: Disable server side rendering, not needed for a VST plugin
-	export const prerender = true;
-	export const ssr = false;
 
 	onMount(() => {
 		// put the device pixel density into a store
