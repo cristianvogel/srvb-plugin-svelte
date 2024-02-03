@@ -1,4 +1,7 @@
 <script>
+	// This is the main page for the plugin
+	// Here the main UI is defined, param changes are handled and the interop bindings get sent
+	// to the bound native environment via  __postNativeMessage__ function
 	// @ts-nocheck
 	import InteractiveControls from '$lib/components/InteractiveControls.svelte';
 	import { toFixed } from '$lib/precisUI/lib/Utils';
@@ -18,7 +21,9 @@
 		const name = getNameFromManifest(touchedID);
 		try {
 			requestParamValueUpdate(name, readout);
-		} catch (error) {}
+		} catch (error) {
+			console.error('Error updating parameter value', error);
+		}
 	}
 
 	function getNameFromManifest(id) {
@@ -48,8 +53,8 @@
 				</text>
 				<line x1="0.5rem" y1="7.5%" x2="225%" y2="7.5%" stroke="antiqueWhite" />
 			</svg>
-			<div class="absolute top-[80%] right-10">
-				𝌺 <a href="https://twitter.com/neverenginelabs">@neverenginelabs</a>
+			<div class="absolute top-[80%] right-10 text-xs">
+				𝌺 <a href="https://github.com/cristianvogel">@neverenginelabs</a>
 			</div>
 			<InteractiveControls on:output={handleOutputValue} />
 		</div>
