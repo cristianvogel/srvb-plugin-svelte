@@ -8,6 +8,8 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+.npmrc
+.prettierrc
 
 # Builds
 native
@@ -16,6 +18,7 @@ build
 dist
 *.local
 public/dsp.main.js
+public/manifest.json
 
 # Editor directories and files
 .vscode
