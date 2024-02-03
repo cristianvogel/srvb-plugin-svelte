@@ -1,18 +1,34 @@
 # SRVB
 # Template with SvelteKit, Typescript, Skeleton and Elementary
 
-
-
 * MIT Licensed ⤵︎
 * ▷ [SkeletonUI](https://www.skeleton.dev/)
 * ▷ [Elementary](https://github.com/elemaudio/elementary)  
 * ▷ [SvelteKit](https://github.com/sveltejs/svelte)
-* 
-...
-  and also my own attempt at faders and dials Svelte components
-* ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI)
 
-This is a template for building audio plugins with SvelteKit, Skeleton, Typescript and Elementary. It is by no means a clean and simple template. Still a work in progress and rather undocumented. It is based on the [SRVB](https://github.com/elemaudio/srvb) example from Elementary, which is using React and Tailwind. I have replaced React with SvelteKit and Tailwind with Skeleton UI - I also made UI implemntations again from scratch.
+This is a template for building audio plugins with SvelteKit, Skeleton, Typescript and Elementary. It is by no means a clean and simple process. Making plug-ins *is* rocket science in my experience... So anyway, this repo is still a work in progress and rather undocumented. Get your pot-holing gear on.
+
+ The whole thing is based on the [SRVB](https://github.com/elemaudio/srvb) example from Elementary, which is using React and Tailwind. I have replaced React with SvelteKit and Tailwind with Skeleton UI which is wrapping Tailwind with extra features. Probably a lot more than you would ever need in a plugin, but I didn't want to cherry pick! I also put in the radial dial from my own funky Svelte UI implementation ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI)
+
+If you haven't worked with `git submodule` before, ok. Open [this chapter](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in a tab. Notice this bit -
+> When you clone such a project, by default you get the directories that contain submodules, but none of the files within them yet.
+
+Basically, nothing will work until all the submodules and their deps are downloaded. That's a lot of stuff, JUCE, Elementary, CHOC. You want to see a folder called `native` appearing on your local machine.
+
+Some things to try;
+
+```git submodule status```
+if nothing happens, then the submodules are not initialised at all.
+
+I have found that after making a new repository from the template, then cloning that, you still need to manually add the submodules. Like this;
+
+```
+
+---
+
+_What follows here is the original ReadMe from SRVB repo_
+
+ **DEFINITELY READ ⤵︎**
 
 SRVB is a small digital reverb audio plugin (VST3/AU) for MacOS and Windows.
 

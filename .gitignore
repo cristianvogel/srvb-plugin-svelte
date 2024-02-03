@@ -16,7 +16,7 @@ vite.config.ts.timestamp-*
 .prettierignore
 
 # Builds
-native
+
 node_modules
 build
 dist
