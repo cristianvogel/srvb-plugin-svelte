@@ -7,3 +7,12 @@
 [submodule "choc"]
 	path = native/choc
 	url = https://github.com/nick-thompson/choc.git
+[submodule "native/elementary"]
+	path = native/elementary
+	url = https://github.com/elemaudio/elementary.git
+[submodule "native/juce"]
+	path = native/juce
+	url = https://github.com/juce-framework/JUCE.git
+[submodule "native/choc"]
+	path = native/choc
+	url = https://github.com/nick-thompson/choc.git
