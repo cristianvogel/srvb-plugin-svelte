@@ -19,7 +19,7 @@
 
 	let readout = 0;
 	let touchedID = 'dial.1';
-	$: logger = `Output from: ${getNameFromManifest(touchedID)} - ${readout}`;
+	$: logger = `Parameter: ${getNameFromManifest(touchedID)} - ${readout}`;
 
 	const parameters = manifest.parameters;
 
@@ -54,12 +54,12 @@
 	<div class="display-screen">
 		<div class="text-warning-400">
 			<svg style="height: 1rem;">
-				<text style="transform:translate(5%, 100%);font-size: xx-small" fill="grey">
+				<text style="transform:translate(5%, 90%);font-size: xx-small" fill="grey">
 					{logger}
 				</text>
 				<line x1="0.5rem" y1="7.5%" x2="225%" y2="7.5%" stroke="antiqueWhite" />
 			</svg>
-			<div class="absolute top-50 left-10">
+			<div class="absolute top-[80%] right-10">
 				𝌺 <a href="https://twitter.com/neverenginelabs">@neverenginelabs</a>
 			</div>
 			<InteractiveControls on:output={handleOutputValue} />

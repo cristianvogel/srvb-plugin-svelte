@@ -1,7 +1,11 @@
+import { get } from 'svelte/store';
 import { clamp, remap } from './Utils';
 import { removeListeners } from './Listeners';
 import { BasicController } from './PrecisControllers';
+import { PixelDensity } from '$stores/generalStores';
 import type { WidgetWithKey } from '../Precis-UI-TypeDeclarations';
+
+const pixelDensity = get(PixelDensity) as number;
 
 export function handleMouseDrag(event: MouseEvent, widget: BasicController): void {
 	if (!widget) return;
@@ -25,16 +29,17 @@ export function handleModifier(event: KeyboardEvent): void {
  */
 function updatesForMouseDrag(caller: any) {
 	const { id, widget, event } = caller;
+	const { height, taper, precis } = widget;
+
 	if (!widget.changing || !widget.focussed) {
 		return;
 	}
-	// console.log(`◎ [${id}] is changing on ▹ ${widget.focussed}`)
+	console.log(`◎ [${id}] is changing on ▹ ${widget.focussed}`);
 	widget.clientRect = (widget.selected as Element).getBoundingClientRect();
-	const dy = event.movementY;
+	const dy = event.movementY * (pixelDensity * (precis ? 6 : 1.618)); // tuned for no PointerLock API in WebView
 	if (dy === 0) {
 		return;
 	}
-	const { height, taper, precis } = widget;
 
 	if (precis) {
 		widget.currentValue = clamp(

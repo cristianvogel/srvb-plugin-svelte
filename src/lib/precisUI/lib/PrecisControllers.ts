@@ -10,7 +10,7 @@
 import { asLogicValue, radialPoints, remap, roundTo, toNumber } from './Utils';
 import { createEventDispatcher } from 'svelte';
 import { addListeners } from './Listeners';
-import { Dirty, WidgetStore } from '$stores/stores';
+import { Dirty, WidgetStore } from '$stores/precisUI_Stores';
 import { get } from 'svelte/store';
 import { Palette as C } from '$lib/precisUI/Precis-UI-TypeDeclarations';
 import { Default, DEFAULT_RECT } from '$lib/components/PrecisUI/Precis-UI-Defaults';

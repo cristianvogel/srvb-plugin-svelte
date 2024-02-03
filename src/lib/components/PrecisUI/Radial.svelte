@@ -10,7 +10,7 @@
 	import { radialTickMarkAt, remap, toNumber } from '$lib/precisUI/lib/Utils';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { PointerPlotStore, WidgetStore } from '$stores/stores';
+	import { PointerPlotStore, WidgetStore } from '$stores/precisUI_Stores';
 	import type {
 		DialTag,
 		Rect,

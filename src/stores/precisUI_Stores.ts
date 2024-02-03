@@ -8,9 +8,7 @@ export const WidgetStore: Writable<WidgetRegister> = writable(new Map());
 
 type PointerPlot = Map<string, PointsArray>; // widget.id , array of points
 export const PointerPlotStore: Writable<PointerPlot> = writable(new Map());
-
 export const ListeningWidget: Writable<BasicController> = writable();
-
 export const ListeningElement: Writable<HTMLElement> = writable();
 
 /**
