@@ -153,7 +153,7 @@ using DOM selectors if needed
 	on:mouseup={() => (dial.stateFlags = { changing: false, focussed: true, precis: false })}
 	style={dial.containerTransform(dial, scale, rect)}
 >
-	<!-- animated numerical readout mojo-->
+	<!-- animated numerical readout mojo - lots of hand tuning -->
 	{#if dial.changing && animatedReadout}
 		{@const value = dial.getNormValue()}
 		{@const gearedValue = (value * -200) % 20}
@@ -177,7 +177,7 @@ using DOM selectors if needed
 					transform="translate ( {adjust.x} {adjust.y} )
                                 scale({adjust.scale.x}, {dial.precis ? 1 : adjust.scale.y} )"
 				>
-					<text fill={C.aquaLight}>{roundedReadout}</text>
+					<text fill={C.whiteBis}>{roundedReadout}</text>
 				</g>
 			</svg>
 		</div>

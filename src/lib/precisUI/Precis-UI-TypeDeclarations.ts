@@ -100,6 +100,7 @@ export enum Palette {
 	frenchSilver = 'gainsboro',
 	slate = 'slategray',
 	tan = 'tan',
-	deepBlue = 'midnightblue'
+	deepBlue = 'midnightblue',
+	darkslate = 'darkslategray'
 }
 export type Tint = RGB | Palette | RGBA | HEX;

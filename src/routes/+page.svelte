@@ -1,35 +1,37 @@
-<script>
+<script lang="ts">
 	// This is the main page for the plugin
 	// Here the main UI is defined, param changes are handled and the interop bindings get sent
 	// to the bound native environment via  __postNativeMessage__ function
 	// @ts-nocheck
 	import InteractiveControls from '$lib/components/InteractiveControls.svelte';
 	import { toFixed } from '$lib/precisUI/lib/Utils';
-	import { ParameterManifest } from '$stores/generalStores';
+	import { Parameters } from '$stores/generalStores';
+	import type { DialTag } from '$precisUI/Precis-UI-TypeDeclarations';
+	import { TouchedID } from '$stores/precisUI_Stores';
 
-	const manifest = $ParameterManifest;
-
-	let readout = 0;
-	let touchedID = 'dial.1';
-	$: logger = `Parameter: ${getNameFromManifest(touchedID)} - ${readout}`;
-
-	const parameters = manifest.parameters;
+	let logger = '▷ ';
+	$: readout = 0;
+	$: logger = `${$TouchedID} ▷ ${getParamId($TouchedID)} : ${readout}`;
 
 	function handleOutputValue(ev) {
-		readout = Number(toFixed(ev.detail.value, 4));
-		touchedID = ev.detail.id;
-		const name = getNameFromManifest(touchedID);
-		try {
-			requestParamValueUpdate(name, readout);
-		} catch (error) {
-			console.error('Error updating parameter value', error);
-		}
+		$TouchedID = ev.detail.id;
+		readout = displayValue(ev.detail.value);
+		const paramID: string = getParamId(ev.detail.id);
+		requestParamValueUpdate(paramID, ev.detail.value);
 	}
 
-	function getNameFromManifest(id) {
-		const index = Number(id.split('.')[1]);
-		const params = Object.values(parameters)[index - 1];
-		return params.name;
+	function getParamId(dialTag: DialTag) {
+		const index = getIndexFromDialTag(dialTag);
+		const paramId = $Parameters.map((p) => p.paramId)[index - 1];
+		return paramId;
+	}
+
+	function getIndexFromDialTag(dialTag: DialTag) {
+		return Number(dialTag.split('.')[1]);
+	}
+
+	function displayValue(value) {
+		return Number(toFixed(value, 4));
 	}
 
 	// Elementary runtime
@@ -40,6 +42,7 @@
 				paramId,
 				value
 			});
+			logger = ' setParameterValue ' + paramId + ' , ' + value;
 		}
 	}
 </script>
@@ -47,11 +50,14 @@
 <div class="page-container page-spacing neumorphism">
 	<div class="display-screen">
 		<div class="text-warning-400">
-			<svg style="height: 1rem;">
-				<text style="transform:translate(5%, 90%);font-size: xx-small" fill="grey">
+			<svg style="height: 3rem; width: 40rem">
+				<text style="transform:translate(0.5rem, 1.8rem);font-size: xx-small" fill="darkcyan">
 					{logger}
 				</text>
-				<line x1="0.5rem" y1="7.5%" x2="225%" y2="7.5%" stroke="antiqueWhite" />
+				<text style="transform:translate(0.5rem, 1rem);font-size: xx-small" fill="slategrey">
+					Right mouse or control and drag for Precision mode.
+				</text>
+				<line x1="0.5rem" y1="0.16rem" x2="16rem" y2="0.16rem" stroke="antiqueWhite" />
 			</svg>
 			<div class="absolute top-[80%] right-10 text-xs">
 				𝌺 <a href="https://github.com/cristianvogel">@neverenginelabs</a>
