@@ -11,7 +11,7 @@
 This is a template for building audio plugins with Elementary, SvelteKit, Tailwind (via SkeletonUI). The target plugins will have a front end running in ...
 >**..the world's most hassle-free single-header WebView class!**
 
-..thanks to the brilliant audio OSS team behind [CHOC](https://github.com/Tracktion/choc) and JUCE. Which, combined with SvelteKit compiled JS, makes for a very fast, stateful front-end. 
+..thanks to the brilliant audio OSS team behind [CHOC](https://github.com/Tracktion/choc) and JUCE. Which, combined with SvelteKit compiled JS, makes for a very fast, stateful front-end.
 
 Ok. First off. I won't pretend that building native plug-ins is not rocket science. _It is._
 
@@ -30,7 +30,13 @@ Basically, nothing will work until all the submodules and their deps are downloa
 * `elementary @ c16e089`
 * `choc @ de61da5`
 
-I have found that after making a new repository from the template (this or the original at [Elementary](), you still need to manually clone the submodules.
+Now try
+
+```
+git submodule init && git submodule update
+```
+
+If things are still not happening, I have found that in some situations, you might need to start again from scratch and manually clone resursively the submodules.
 
 ```
 git clone --recursive <repository>
@@ -42,9 +48,9 @@ To go all the way into a native build, will involve installing the CMake depende
 
 Running `npm run dev` will script the full native dev environment which impressively allows hot-swap _jit_  developing updating changes to the plugin running natively inside a DAW host ( 😎 !)
 
-Building that environment can take a while and be frustrating if there are bugs, so I added a `npm run dev-ui` option to run dev the UI part in a localhost browser page and iterate on that rapidly. Obviously no native binding will happen there. 
+Building that environment can take a while and be frustrating if there are bugs, so I added a `npm run dev-ui` option to run dev the UI part in a localhost browser page and iterate on that rapidly. Obviously no native binding will happen there.
 
-Also, I needed to adjust the `CMakeLists.txt` flow to accomodate compiling a SvelteKit app first and then moving it into the native build assets scope. 
+Also, I needed to adjust the `CMakeLists.txt` flow to accomodate compiling a SvelteKit app first and then moving it into the native build assets scope.
 
 _Buena suerte!_
 
