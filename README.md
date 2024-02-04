@@ -1,29 +1,46 @@
 # SRVB
-# Template with SvelteKit, Typescript, Skeleton and Elementary
+## Audio plugin template with SvelteKit, Typescript, Skeleton and Elementary.Audio
 
 * MIT Licensed ⤵︎
-* ▷ [SkeletonUI](https://www.skeleton.dev/)
 * ▷ [Elementary](https://github.com/elemaudio/elementary)  
 * ▷ [SvelteKit](https://github.com/sveltejs/svelte)
+* ▷ [SkeletonUI](https://www.skeleton.dev/)
 
-This is a template for building audio plugins with SvelteKit, Skeleton, Typescript and Elementary. It is by no means a clean and simple process. Making plug-ins *is* rocket science in my experience... So anyway, this repo is still a work in progress and rather undocumented. Get your pot-holing gear on.
+This is a template for building audio plugins with Elementary, SvelteKit, Tailwind (via SkeletonUI). It is by no means a simple process. The native plugins have a front end running in ...
+>**..the world's most hassle-free single-header WebView class!**
 
- The whole thing is based on the [SRVB](https://github.com/elemaudio/srvb) example from Elementary, which is using React and Tailwind. I have replaced React with SvelteKit and Tailwind with Skeleton UI which is wrapping Tailwind with extra features. Probably a lot more than you would ever need in a plugin, but I didn't want to cherry pick! I also put in the radial dial from my own funky Svelte UI implementation ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI)
+..thanks to the brilliant audio OSS team behind [CHOC](https://github.com/Tracktion/choc) and JUCE.
 
-If you haven't worked with `git submodule` before, ok. Open [this chapter](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in a tab. Notice this bit -
+Ok. I won't pretend that building native plug-ins is not rocket science. _It is._
+
+>**Open the pod bay doors HAL.**
+
+ This template is a fork of the [SRVB](https://github.com/elemaudio/srvb) example from Elementary Audio, which uses React and Tailwind. I went about replacing React with SvelteKit and Tailwind with Skeleton UI which is a nice Svelte-y Tailwind based UI library, with loads of webdesign features. Probably a lot more than you would ever need in a plugin. I also put in the radial dial from my own funky Svelte UI implementation ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI)
+
+The Elementary team have automated things as much as possible, and the template also uses subtly complex `git submodules` technology. If you haven't worked with a `git submodule` before, ok. Open [this chapter](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in a tab. Notice this bit -
 > When you clone such a project, by default you get the directories that contain submodules, but none of the files within them yet.
 
-Basically, nothing will work until all the submodules and their deps are downloaded. That's a lot of stuff, JUCE, Elementary, CHOC. You want to see a folder called `native` being populated on your local machine, with the contents of these libraries from an exact commit ID
+Basically, nothing will work until all the submodules and their deps are downloaded. That's a lot of stuff for this scripted build repo; namely JUCE, Elementary, CHOC. You want to see a folder called `native` being populated on your local machine, with the contents of these libraries, being checked out from a precise commit ID. You may run into build problems, if the latest version of JUCE is pulled, so be aware that the commit ID's are the correct ones. I have seen this working all the way to finished artifacts with;
 
-Some things to try;
+* `juce @ 69795dcz`
+* `elementary @ c16e089`
+* `choc @ de61da5`
 
-```git submodule status```
-if nothing happens, then the submodules are not initialised at all.
+I have found that after making a new repository from the template (this or the original at [Elementary](), you still need to manually clone the submodules.
 
-I have found that after making a new repository from the template (this or the original at [Elementary](), you still need to manually add the submodules. Like this;
+```
+git clone --recursive <repository>
+```
 
+For example, if you are using the template from my fork, replace `<repository>` with `https://github.com/cristianvogel/srvb-plugin-svelte`
 
+To go all the way into a native build, will involve installing the CMake dependency and running the CMake scripts that Nick and collaborators have kindly setup. They do work fine, at the time of writing this. Read the original guide attached below.
 
+Running `npm run dev` will script the full native dev environment which impressively allows hot-swap _jit_  developing updating changes to the plugin running natively inside a DAW host ( 😎 !)
+
+Building that environment can take a while and be frustrating if there are bugs, so I added a `npm run dev-ui` option to run dev the UI part in a localhost browser page and iterate on that rapidly. Obviously no native binding will happen there.
+
+_Buena suerte!_
 
 ---
 
