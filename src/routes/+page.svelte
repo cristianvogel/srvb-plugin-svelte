@@ -63,13 +63,7 @@
         >
           Right mouse or control and drag for Precision mode.
         </text>
-        <line
-          x1="0.5rem"
-          y1="0.16rem"
-          x2="16rem"
-          y2="0.16rem"
-          stroke="antiqueWhite"
-        />
+        <line x1="1%" y1="0.16px" x2="33%" y2="0.16px" stroke="antiqueWhite" />
       </svg>
       <div class="absolute top-[80%] right-10 text-xs">
         𝌺 <a href="https://github.com/cristianvogel">@neverenginelabs</a>

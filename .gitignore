@@ -22,7 +22,7 @@ build
 dist
 *.local
 public/dsp.main.js
-public/manifest.json
+
 
 # Editor directories and files
 .vscode
