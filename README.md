@@ -6,7 +6,7 @@
 * ▷ [SvelteKit](https://github.com/sveltejs/svelte)
 * ▷ [SkeletonUI](https://www.skeleton.dev/)
 
-This is a template for building audio plugins with Elementary, SvelteKit, Tailwind (via SkeletonUI). It is by no means a simple process. The native plugins have a front end running in ...
+This is a template for building audio plugins with Elementary, SvelteKit, Tailwind (via SkeletonUI). The native plugins have a front end running in ...
 >**..the world's most hassle-free single-header WebView class!**
 
 ..thanks to the brilliant audio OSS team behind [CHOC](https://github.com/Tracktion/choc) and JUCE.
@@ -15,11 +15,11 @@ Ok. I won't pretend that building native plug-ins is not rocket science. _It is.
 
 >**Open the pod bay doors HAL.**
 
- This template is a fork of the [SRVB](https://github.com/elemaudio/srvb) example from Elementary Audio, which uses React and Tailwind. I went about replacing React with SvelteKit and Tailwind with Skeleton UI which is a nice Svelte-y Tailwind based UI library, with loads of webdesign features. Probably a lot more than you would ever need in a plugin. I also put in the radial dial component from my own funky Svelte UI code ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI)
+ This template is a fork of the [SRVB](https://github.com/elemaudio/srvb) example from Elementary Audio, which uses React and Tailwind for the front-end and state.  The audio [DSP algorithm](https://github.com/elemaudio/srvb/blob/main/dsp/srvb.js) is an Elementary implementation of the excellent sounding [SignalSmith Hadamard Matrix reverberator](https://github.com/Signalsmith-Audio/reverb-example-code) (which definitely deserves to be the new FreeVerb, it's super lush). I went about replacing React with SvelteKit and Tailwind with Skeleton UI which is a nice Svelte-y Tailwind based UI library, with loads of webdesign features. Probably a lot more than you would ever need in a plugin. I also contributed the radial dial component to this version of the plugin, taken from my own funky Svelte component pack ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI) .
 
- ![screenshot](SRVB-PrecisUI.png)
+<img src="SRVB-PrecisUI.png" alt="image" width="400" height="auto">
 
-The Elementary team have automated things as much as possible, and the template also uses subtly complex `git submodules` technology. If you haven't worked with a `git submodule` before, ok. Open [this chapter](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in a tab. Notice this bit -
+The Elementary team have automated the native build process a lot. To accomplish this, the original template uses subtly complex `git submodules` technology. If you haven't worked with a `git submodule` before, ok. Open [this chapter](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in a tab. Notice this bit -
 > When you clone such a project, by default you get the directories that contain submodules, but none of the files within them yet.
 
 Basically, nothing will work until all the submodules and their deps are downloaded. That's a lot of stuff for this scripted build repo; namely JUCE, Elementary, CHOC. You want to see a folder called `native` being populated on your local machine, with the contents of these libraries, being checked out from a precise commit ID. You may run into build problems, if the latest version of JUCE is pulled, so be aware that the commit ID's are the correct ones. I have seen this working all the way to finished artifacts with;
