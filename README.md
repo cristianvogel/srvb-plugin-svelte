@@ -6,7 +6,7 @@
 * ▷ [SvelteKit](https://github.com/sveltejs/svelte)
 * ▷ [SkeletonUI](https://www.skeleton.dev/)
 
-This is a template for building audio plugins with Elementary, SvelteKit, Tailwind (via SkeletonUI). The native plugins have a front end running in ...
+This is a template for building audio plugins with Elementary, SvelteKit, Tailwind (via SkeletonUI). The target plugins will have a front end running in ...
 >**..the world's most hassle-free single-header WebView class!**
 
 ..thanks to the brilliant audio OSS team behind [CHOC](https://github.com/Tracktion/choc) and JUCE. Which, combined with SvelteKit compiled JS, makes for a very fast, stateful front-end. 
