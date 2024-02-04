@@ -15,7 +15,9 @@ Ok. I won't pretend that building native plug-ins is not rocket science. _It is.
 
 >**Open the pod bay doors HAL.**
 
- This template is a fork of the [SRVB](https://github.com/elemaudio/srvb) example from Elementary Audio, which uses React and Tailwind. I went about replacing React with SvelteKit and Tailwind with Skeleton UI which is a nice Svelte-y Tailwind based UI library, with loads of webdesign features. Probably a lot more than you would ever need in a plugin. I also put in the radial dial from my own funky Svelte UI implementation ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI)
+ This template is a fork of the [SRVB](https://github.com/elemaudio/srvb) example from Elementary Audio, which uses React and Tailwind. I went about replacing React with SvelteKit and Tailwind with Skeleton UI which is a nice Svelte-y Tailwind based UI library, with loads of webdesign features. Probably a lot more than you would ever need in a plugin. I also put in the radial dial component from my own funky Svelte UI code ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI)
+
+ ![screenshot](SRVB-PrecisUI.png)
 
 The Elementary team have automated things as much as possible, and the template also uses subtly complex `git submodules` technology. If you haven't worked with a `git submodule` before, ok. Open [this chapter](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in a tab. Notice this bit -
 > When you clone such a project, by default you get the directories that contain submodules, but none of the files within them yet.
