@@ -13,16 +13,17 @@ This is a template for building audio plugins with SvelteKit, Skeleton, Typescri
 If you haven't worked with `git submodule` before, ok. Open [this chapter](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in a tab. Notice this bit -
 > When you clone such a project, by default you get the directories that contain submodules, but none of the files within them yet.
 
-Basically, nothing will work until all the submodules and their deps are downloaded. That's a lot of stuff, JUCE, Elementary, CHOC. You want to see a folder called `native` appearing on your local machine.
+Basically, nothing will work until all the submodules and their deps are downloaded. That's a lot of stuff, JUCE, Elementary, CHOC. You want to see a folder called `native` being populated on your local machine, with the contents of these libraries from an exact commit ID
 
 Some things to try;
 
 ```git submodule status```
 if nothing happens, then the submodules are not initialised at all.
 
-I have found that after making a new repository from the template, then cloning that, you still need to manually add the submodules. Like this;
+I have found that after making a new repository from the template (this or the original at [Elementary](), you still need to manually add the submodules. Like this;
 
-```
+
+
 
 ---
 
