@@ -15,7 +15,7 @@ Ok. I won't pretend that building native plug-ins is not rocket science. _It is.
 
 >**Open the pod bay doors HAL.**
 
- This template is a fork of the [SRVB](https://github.com/elemaudio/srvb) example from Elementary Audio, which uses React and Tailwind. I went about replacing React with SvelteKit and Tailwind with Skeleton UI which is a nice Svelte-y Tailwind based UI library, with loads of webdesign features. Probably a lot more than you would ever need in a plugin. I also put in the radial dial component from my own funky Svelte UI code ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI)
+ This template is a fork of the [SRVB](https://github.com/elemaudio/srvb) example from Elementary Audio, which uses React and Tailwind for the front-end and state.  The audio [DSP algorithm](https://github.com/elemaudio/srvb/blob/main/dsp/srvb.js) is an Elementary implementation of the excellent sounding [SignalSmith Hadamard Matrix reverberator](https://github.com/Signalsmith-Audio/reverb-example-code) (which definitely deserves to be the new FreeVerb, it's super lush). I went about replacing React with SvelteKit and Tailwind with Skeleton UI which is a nice Svelte-y Tailwind based UI library, with loads of webdesign features. Probably a lot more than you would ever need in a plugin. I also put in the radial dial component from my own funky Svelte UI code ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI) .
 
  ![screenshot](SRVB-PrecisUI.png)
 
