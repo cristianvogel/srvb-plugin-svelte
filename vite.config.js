@@ -37,7 +37,7 @@ export default defineConfig({
   base: './',
 server: {
   fs: {
-    allow: ['/public'],
+    allow: ['/public', '/static'],
   },
 },
   define: {

@@ -3,7 +3,20 @@ project(Elem_SRVB VERSION 0.1.0)
 
 
 set(TARGET_NAME SRVB)
+# out dir for SvelteKit compiler
+set(BUILD_DIR ${CMAKE_SOURCE_DIR}/../build/)
+
+# out dir for native Plugins 
+# you will probably need to manually move the binaries
+# to your local VST / AU directories
 set(ASSETS_DIR ${CMAKE_SOURCE_DIR}/../dist/)
+
+# Move the SvelteKit build directory to the assets directory
+if(EXISTS ${BUILD_DIR})
+  file(RENAME ${BUILD_DIR} ${ASSETS_DIR})
+else()
+  message("The SvelteKit compiled directory ${BUILD_DIR} does not exist.")
+endif()
 
 option(JUCE_ENABLE_MODULE_SOURCE_GROUPS "Enable Module Source Groups" ON)
 option(JUCE_BUILD_EXTRAS "Build JUCE Extras" OFF)

@@ -1,5 +1,5 @@
 
-import adapter from '@sveltejs/adapter-auto' //should be adapter-static? ( like Tauri..? )
+import adapter from '@sveltejs/adapter-static' //should be adapter-static? ( like Tauri..? )
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 
@@ -17,19 +17,16 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 		alias: {
-			// this will match a file
-			'my-file': 'path/to/my-file.js',
-			// this will match a directory and its contents
-			// (`my-directory/x` resolves to `path/to/my-directory/x`)
-			'my-directory': 'path/to/my-directory',
-			// an alias ending /* will only match
-			// the contents of a directory, not the directory itself
-			'my-directory/*': 'path/to/my-directory/*',
-
 			// NEL ⤵︎
 			'$precisUI' : 'src/lib/precisUI',
 			'$stores' : 'src/stores/',
-		}
+		},
+	},
+	// options tuned for audio plug-in dev 
+	// "dom", Svelte emits a JavaScript class for mounting to the DOM.
+	compilerOptions: { 
+		generate: 'dom',
+		errorMode: 'throw',
 	}
 };
 

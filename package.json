@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist && rimraf sveltekit/build && rimraf native/build",
     "predev": "npm run clean",
     "prebuild": "npm run clean",
     "dev": "npm run dev-native && concurrently \"npm run dev-dsp\" \"vite\"",
@@ -14,7 +14,7 @@
     "build-dsp": "esbuild dsp/main.js --bundle --outfile=public/dsp.main.js",
     "build-ui": "vite build",
     "dev-ui": "vite dev",
-    "build": "npm run build-dsp && npm run build-ui && npm run build-native",
+    "build": "npm run build-ui && npm run build-dsp && npm run build-native",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
