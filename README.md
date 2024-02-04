@@ -1,3 +1,5 @@
+[![Build](https://github.com/cristianvogel/srvb-plugin-svelte/actions/workflows/main.yml/badge.svg)](https://github.com/cristianvogel/srvb-plugin-svelte/actions/workflows/main.yml)
+
 # SRVB
 ## Audio plugin template with SvelteKit, Typescript, Skeleton and Elementary.Audio
 
