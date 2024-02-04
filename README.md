@@ -9,13 +9,13 @@
 This is a template for building audio plugins with Elementary, SvelteKit, Tailwind (via SkeletonUI). The native plugins have a front end running in ...
 >**..the world's most hassle-free single-header WebView class!**
 
-..thanks to the brilliant audio OSS team behind [CHOC](https://github.com/Tracktion/choc) and JUCE.
+..thanks to the brilliant audio OSS team behind [CHOC](https://github.com/Tracktion/choc) and JUCE. Which, combined with SvelteKit compiled JS, makes for a very fast, stateful front-end. 
 
-Ok. I won't pretend that building native plug-ins is not rocket science. _It is._
+Ok. First off. I won't pretend that building native plug-ins is not rocket science. _It is._
 
 >**Open the pod bay doors HAL.**
 
- This template is a fork of the [SRVB](https://github.com/elemaudio/srvb) example from Elementary Audio, which uses React and Tailwind for the front-end and state.  The audio [DSP algorithm](https://github.com/elemaudio/srvb/blob/main/dsp/srvb.js) is an Elementary implementation of the excellent sounding [SignalSmith Hadamard Matrix reverberator](https://github.com/Signalsmith-Audio/reverb-example-code) (which definitely deserves to be the new FreeVerb, it's super lush). I went about replacing React with SvelteKit and Tailwind with Skeleton UI which is a nice Svelte-y Tailwind based UI library, with loads of webdesign features. Probably a lot more than you would ever need in a plugin. I also contributed the radial dial component to this version of the plugin, taken from my own funky Svelte component pack ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI) .
+Let's start with what this codebase is. It is a template you can use to roll your own plugins with the above stack. It was forked from the milestone that is [SRVB](https://github.com/elemaudio/srvb) , a realworld build example shared by Elementary Audio, which uses React and Tailwind for the front-end and state.  The audio [DSP algorithm](https://github.com/elemaudio/srvb/blob/main/dsp/srvb.js) involved by default is an Elementary implementation of the excellent sounding [SignalSmith Hadamard Matrix reverberator](https://github.com/Signalsmith-Audio/reverb-example-code) (which definitely deserves to be the new FreeVerb, it's super lush). I went about replacing React with SvelteKit and Tailwind with Skeleton UI which is a nice Svelte-y Tailwind based UI library, with loads of webdesign features. Probably a lot more than you would ever need in a plugin. I also contributed the radial dial component to this version of the plugin, taken from my own funky Svelte component pack ▷ [PrecisUI](https://github.com/cristianvogel/Precis-UI) .
 
 <img src="SRVB-PrecisUI.png" alt="image" width="400" height="auto">
 
@@ -34,13 +34,15 @@ I have found that after making a new repository from the template (this or the o
 git clone --recursive <repository>
 ```
 
-For example, if you are using the template from my fork, replace `<repository>` with `https://github.com/cristianvogel/srvb-plugin-svelte`
+For example, if you are using this here template - the SvelteKit fork - replace `<repository>` with `https://github.com/cristianvogel/srvb-plugin-svelte`
 
 To go all the way into a native build, will involve installing the CMake dependency and running the CMake scripts that Nick and collaborators have kindly setup. They do work fine, at the time of writing this. Read the original guide attached below.
 
 Running `npm run dev` will script the full native dev environment which impressively allows hot-swap _jit_  developing updating changes to the plugin running natively inside a DAW host ( 😎 !)
 
-Building that environment can take a while and be frustrating if there are bugs, so I added a `npm run dev-ui` option to run dev the UI part in a localhost browser page and iterate on that rapidly. Obviously no native binding will happen there.
+Building that environment can take a while and be frustrating if there are bugs, so I added a `npm run dev-ui` option to run dev the UI part in a localhost browser page and iterate on that rapidly. Obviously no native binding will happen there. 
+
+Also, I needed to adjust the `CMakeLists.txt` flow to accomodate compiling a SvelteKit app first and then moving it into the native build assets scope. 
 
 _Buena suerte!_
 
