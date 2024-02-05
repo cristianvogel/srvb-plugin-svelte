@@ -5,33 +5,25 @@
   // @ts-nocheck
   import InteractiveControls from "$lib/components/InteractiveControls.svelte";
   import { toFixed } from "$lib/precisUI/lib/Utils";
-  import { Parameters } from "$stores/generalStores";
+  import { ParametersUI, ParametersFromHost } from "$stores/generalStores";
   import type { DialTag } from "$precisUI/Precis-UI-TypeDeclarations";
   import { TouchedID } from "$stores/precisUI_Stores";
+  import type { ParameterDataFromHost } from "$lib";
+  import { createEventDispatcher } from "svelte";
+  import { get } from "svelte/store";
 
   let logger = "▷ ";
   $: readout = 0;
   $: logger = `${$TouchedID} ▷ ${getParamId($TouchedID)} : ${readout}`;
 
+  const dispatch = createEventDispatcher();
+
+  // interaction handler
   function handleOutputValue(ev) {
     $TouchedID = ev.detail.id;
     readout = displayValue(ev.detail.value);
     const paramID: string = getParamId(ev.detail.id);
     requestParamValueUpdate(paramID, ev.detail.value);
-  }
-
-  function getParamId(dialTag: DialTag) {
-    const index = getIndexFromDialTag(dialTag);
-    const paramId = $Parameters.map((p) => p.paramId)[index - 1];
-    return paramId;
-  }
-
-  function getIndexFromDialTag(dialTag: DialTag) {
-    return Number(dialTag.split(".")[1]);
-  }
-
-  function displayValue(value) {
-    return Number(toFixed(value, 4));
   }
 
   // Elementary runtime
@@ -42,8 +34,42 @@
         paramId,
         value,
       });
-      logger = " setParameterValue " + paramId + " , " + value;
+      logger = " Set ParameterValue " + paramId + " to " + value;
     }
+  }
+
+  // Serialised data from host
+  globalThis.__receiveStateChange__ = (serializedState) => {
+    const state = JSON.parse(serializedState) as ParameterDataFromHost;
+    ParametersFromHost.update(state);
+    updateUIFromHost();
+  };
+
+  function updateUIFromHost() {
+    const dataFromHost = get(ParametersFromHost);
+
+    for (const [k, v] of Object.entries(dataFromHost)) {
+      if (k !== "sampleRate") {
+        const paramId: string = v.paramId;
+        const value: number = v.value;
+        const dialTag: DialTag = `dial.${getIndexFromParamId(paramId)}`;
+        dispatch("output", { id: dialTag, value: value });
+      }
+    }
+  }
+
+  function getParamId(dialTag: DialTag) {
+    const index = getIndexFromDialTag(dialTag);
+    const paramId = $ParametersUI.map((p) => p.paramId)[index - 1];
+    return paramId;
+  }
+
+  function getIndexFromDialTag(dialTag: DialTag) {
+    return Number(dialTag.split(".")[1]);
+  }
+
+  function displayValue(value) {
+    return Number(toFixed(value, 4));
   }
 </script>
 

@@ -1,6 +1,7 @@
 import {Renderer, el} from '@elemaudio/core';
 import {RefMap} from './RefMap';
 import srvb from './srvb';
+import { IncomingValuesStore } from '$stores/generalStores'
 
 
 // This project demonstrates writing a small FDN reverb effect in Elementary.
@@ -29,9 +30,14 @@ function shouldRender(prevState, nextState) {
 //
 // Given the new state, we simply update our refs or perform a full render depending
 // on the result of our `shouldRender` check.
-globalThis.__receiveStateChange__ = (serializedState) => {
-  const state = JSON.parse(serializedState);
 
+// going to try and listen and set this in ++page.svelte and use store
+// to trigger diff based update.
+// Serialized state will have to be parsed somewhere though....
+globalThis.__receiveStateChange__ = (serializedState) => {
+  // const state = JSON.parse(serializedState);
+
+  const state = IncomingValuesStore
   if (shouldRender(prevState, state)) {
     let stats = core.render(...srvb({
       key: 'srvb',

@@ -26,7 +26,6 @@ function pubDirReloadPlugin() {
           event: 'reload-dsp',
         });
       }
-
       return modules;
     }
   };
@@ -34,7 +33,9 @@ function pubDirReloadPlugin() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+ 
   base: './',
+ 
 server: {
   fs: {
     allow: ['/public', '/static'],
